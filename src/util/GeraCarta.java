@@ -1,5 +1,7 @@
 package util;
 import repositorio.tipos_elementos;
+import util.randomizador;
+import util.sorteado;
 public class GeraCarta {
     private int ataque;
     private int defesa;
