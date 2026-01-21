@@ -1,7 +1,7 @@
 Mode=$1
 
 compile () {
-    mkdir -m bin
+    clean
     javac -d bin $(find src -name *.java)
 }
 
@@ -17,6 +17,10 @@ test () {
     run "${A%.*}"
 }
 
+clean () {
+    rm -rf bin/*
+}
+
 if [ "$Mode" = "compile" ]; then
     compile
 
@@ -25,7 +29,7 @@ elif [ "$Mode" = "run" ]; then
     run Main
 
 elif [ "$Mode" = clean ]; then
-    rm -rf bin/*
+    clean
 
 elif [ "$Mode" = test ]; then
     if [ -z "$2" ]; then

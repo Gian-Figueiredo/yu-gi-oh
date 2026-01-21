@@ -9,6 +9,8 @@ set Mode=%1
 :compile
 if not exist bin mkdir bin
 
+call :clean
+
 set FILES=
 for /r src %%f in (*.java) do (
     set FILES=!FILES! "%%f"

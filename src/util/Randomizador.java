@@ -1,5 +1,5 @@
 package util;
-public class randomizador {
+public class Randomizador {
 
     public static int randomizador (String range_max) {
         int range_min = 0;
