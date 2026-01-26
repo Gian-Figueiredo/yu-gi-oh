@@ -1,7 +1,7 @@
 package objects;
 import repositorio.Tipos_elementos;
 import util.Randomizador;
-import util.Sorteado;
+import util.Sorteador;
 public class Carta {
     private int ataque;
     private int defesa;
@@ -10,28 +10,47 @@ public class Carta {
     private String elemento;
     private String lista_randomizador;
 
-
-
     public Carta() {
-        int numero_randomizado_p_nome =  Randomizador.randomizador("5");
-        int numero_randomizado_s_nome =  Randomizador.randomizador("4");
-        this.nome = Sorteado.sorteado(Tipos_elementos.p_nome, numero_randomizado_p_nome) + " " +
-                    Sorteado.sorteado(Tipos_elementos.s_nome, numero_randomizado_s_nome);
+        this.nome = Sorteador.sortear(Tipos_elementos.p_nome, Tipos_elementos.p_nome.size() - 1) + " " +
+                    Sorteador.sortear(Tipos_elementos.s_nome, Tipos_elementos.s_nome.size() - 1);
 
-        int numero_randomizado_tipo =  Randomizador.randomizador("2");
-        this.tipo = Sorteado.sorteado(Tipos_elementos.tipo, numero_randomizado_tipo);
+        this.tipo = Sorteador.sortear(Tipos_elementos.tipo, Tipos_elementos.tipo.size() - 1);
 
-        int numero_randomizado_elemento =  Randomizador.randomizador("2");
-        this.elemento = Sorteado.sorteado(Tipos_elementos.elemento, numero_randomizado_elemento);
+        this.elemento = Sorteador.sortear(Tipos_elementos.elemento, Tipos_elementos.elemento.size() - 1);
 
-        this.ataque = Randomizador.randomizador("3000");
-        this.defesa = Randomizador.randomizador("3000");
+        this.ataque = Randomizador.randomizar(3000);
+        this.defesa = Randomizador.randomizar(3000);
     }
 
+    /**
+     * Método para uma carta conseguir calcular o dano para outra carta
+     * @param vitima
+     * Carta a ser atingida
+     * @return Se a vítima teve sua defesa destuída ou não
+     */
+    public boolean calcular_dano(Carta vitima) {
+        //TO DO
+        // Implementar o sistema de vantagem por elemento e tipo
+        vitima.defesa -= this.ataque;
+        return vitima.defesa > 0;
+    }
+
+    public void efeito(){
+        //TO DO
+        //Criar os efeitos das cartas
+    }
+
+    @Override
+    public String toString(){
+        return this.nome + " (ataque: " + this.ataque + ", defesa: " + this.defesa + ")"; 
+    }
 
     public static void main(String[] args) {
-        System.out.println("Gerando uma carta...");
-        Carta carta = new Carta();
-        System.out.println("Carta criada: " + carta.nome + " com ataque " + carta.ataque + " e defesa " + carta.defesa + " do tipo " + carta.tipo + " do elemento " + carta.elemento);
+        Carta carta1 = new Carta();
+        System.out.println(carta1);
+        Carta carta2 = new Carta();
+        System.out.println(carta2);
+        carta1.calcular_dano(carta2);
+        System.out.println(carta2);
     }
 }

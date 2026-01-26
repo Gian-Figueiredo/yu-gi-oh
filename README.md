@@ -15,26 +15,19 @@ Monstros do elemento escuridão dão mais dano nos Monstros do elemento fogo, Mo
 
 Caso um monstro tenha uma vantagem, ele derá 1.5x de dano, caso ele tenha duas vantagem ele derá 3x de dano e caso ele tenha uma vantagem e uma desvantagem ele dará 1.5x de dano, mas tomará 1.5x de dano
 
-Cada carta terá um efeito que poderá ser utilizado, independente do modo da carta
-
-### Modos de ataque e defesa
-* **Modo de ataque**: Nesse modo, a carta ataca uma carta do oponente. Se o oponente não estiver carta na mão, ele perde os pontos de vida. Se sofrerem um ataque, o dano é subtraído do seu ponto de ataque, se ficar igual ou abaixo de zero, a carta morre e o restante do dano vai para o jogador.\
-* **Modo de defesa**: Nesse modo, a carta usa sua defesa para defender ataques. Se o oponente atacar cartas em modo de defesa, o dano é subtraído de sua defesa, se ficar igual ou abaixo de zero, a carta morre e o restante do dano vai para o jogador.\
+### Ataque e defesa
+* **Ataque**: A carta ataca uma carta do oponente. Se o oponente não estiver carta na mão, ele perde os pontos de vida. Se sofrerem um ataque, o dano é subtraído da sua defesa.\
+* **Defesa**: A carta usa sua defesa para defender ataques. Se o dano do ataque for maior que sua defesa, a carta morre e o restante do dano vai direto para o jogador. Se a carta sobreviver, sua defesa é diminuída pelo ataque.
 
 ## Fluxo do jogo
 ### Começo
 Cada jogador possui seu deck (um conjunto de 40 cartas escolhido aleatoriamente)\
-Cada jogador compra cinco cartas de seu deck antes da fase de preparação, essas cartas ficam na mão jogador
-
-### Fase de preparação
-Nessa fase é escolhido aleatoriamente quem começa.\
-Não pode atacar ainda.\
-Nessa fase, pode escolher apenas colocar uma carta em modo de defesa ou usar um efeito da carta.
+Cada jogador compra cinco cartas de seu deck antes da fase de preparação, essas cartas ficam na mão jogador\
+É decidido quem começa primeiro
 
 ### Turno
-Em cada rodada, o jogador precisa comprar cartas até ter 5 cartas na mão.\
-O jogador pode escolher ações para cada carta.\
-Cartas podem usar seus efeitos e/ou entrar em modo de ataque ou modo de defesa\
+Em cada rodada, o jogador precisa puxar cartas do deck até ter 5 cartas na mão.\
+Cartas podem usar seus efeitos ou atacar\
 Quando o jogador decidir finalizar seu turno, passa para a turno do oponente
 
 # Diagrama de classes
