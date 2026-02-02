@@ -3,8 +3,9 @@ A ideia geral é criar um jogo de cartas semelhante ao Yu-gi-oh!, porém com reg
 
 # Regras
 ## Objetivo
-Cada jogador possui pontos de vida\
-O objeto é reduzir os pontos de vida do oponente a zero.
+**Vitoria**: vence o jogador que zerar os pontos de vida do oponente, cada um inicia com 8000 pontos
+**monstros**: cada carta é um monstro que possui atributos de ataque e defesa, em batalha um monstro pode ficar em modo de ataque ou defesa, casa o ataque de um supere o ataque do outro e eles lutem, o com menor pontuação é destruido, em caso de empate ambos serão destruidos, caso o ataque seja direcionado a um monstro em modo defesa, se o ataque do atacante superar a defesa o monstro será destruido, mas no caso contrario, a defesa do defensor for maior, o atacante não é destruido e a diferença é recebida como dano pelo jogador que atacou, assim como para os outros casos, que exceto em ataque direto ao player quando o ataque do monstro é deferido em sua totalidade ao hp do player, a diferença no status do ataque do monstro vencedor para o perdedor é convertida em dano
+**efeitos**: monstros tem atributos de de tipo, guerreiro, zumbi; elemento, luz, fogo; esses tem vatangens sobre outros, guerreiro tem vatangem sobre zumbi, fogo sobre gelo, isso dá temporariamente um boost no ataque e na defesa do monstro.
 
 ## Cartas
 Cada carta terá um elemento e um tipo, com isso haverá várias interações entre elementos e tipos, com alguns possuindo vantagem em relação a outros.
