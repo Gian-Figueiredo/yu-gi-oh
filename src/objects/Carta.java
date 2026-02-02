@@ -9,7 +9,7 @@ public class Carta {
     private String tipo;
     private String elemento;
     private String lista_randomizador;
-
+    private boolean flag_modo;
     public Carta() {
         this.nome = Sorteador.sortear(Tipos_elementos.p_nome, Tipos_elementos.p_nome.size() - 1) + " " +
                     Sorteador.sortear(Tipos_elementos.s_nome, Tipos_elementos.s_nome.size() - 1);
@@ -17,22 +17,37 @@ public class Carta {
         this.tipo = Sorteador.sortear(Tipos_elementos.tipo, Tipos_elementos.tipo.size() - 1);
 
         this.elemento = Sorteador.sortear(Tipos_elementos.elemento, Tipos_elementos.elemento.size() - 1);
-
+        this.flag_modo = false;
         this.ataque = Randomizador.randomizar(3000);
         this.defesa = Randomizador.randomizar(3000);
     }
 
-    /**
-     * Método para uma carta conseguir calcular o dano para outra carta
-     * @param vitima
-     * Carta a ser atingida
-     * @return Se a vítima teve sua defesa destuída ou não
-     */
-    public boolean calcular_dano(Carta vitima) {
-        //TO DO
-        // Implementar o sistema de vantagem por elemento e tipo
-        vitima.defesa -= this.ataque;
-        return vitima.defesa > 0;
+    public void ataque_carta(Carta atacada, Carta atacante, Jogador atacante_jogador, Jogador atacada_jogador){
+        if(atacada.flag_modo == false && atacante.ataque > atacada.ataque){
+            atacada_jogador.perder_pv(atacante.ataque - atacada.ataque);
+            atacada_jogador.deck.destruir_carta(atacada);
+
+            
+        }
+        else if (atacada.flag_modo == true && atacante.ataque > atacada.defesa){
+            atacada_jogador.perder_pv(atacante.ataque - atacada.defesa);
+            atacada_jogador.deck.destruir_carta(atacada);
+        }
+        else if (atacada.flag_modo == false && atacante.ataque < atacada.ataque){
+
+            atacante_jogador.perder_pv(atacada.ataque - atacante.ataque);
+            atacante_jogador.deck.destruir_carta(atacante);
+        }
+        else if (atacada.flag_modo == true && atacante.ataque < atacada.defesa){
+            // causar dano ao jogador atacante
+            atacante_jogador.perder_pv(atacada.defesa - atacante.ataque);
+            //aqui nao acontece a destruição de cartas
+        }
+        else {
+            //empate, ambas as cartas sao destruídas
+            
+        }
+
     }
 
     public void efeito(){
@@ -50,7 +65,6 @@ public class Carta {
         System.out.println(carta1);
         Carta carta2 = new Carta();
         System.out.println(carta2);
-        carta1.calcular_dano(carta2);
         System.out.println(carta2);
     }
 }
